@@ -4,7 +4,7 @@
 	left: 0;
 	height: 56px;
 	width: 100%;
-	background-color: #c69963;
+	background-image: linear-gradient(to left, #c69963, #80633e);
 	padding: 0 20px;
 	box-sizing: border-box;
 	z-index: 90;
@@ -16,6 +16,24 @@
 
 .Toolbar nav {
 	height: 100%;
+}
+
+.Title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #fff;
+	margin: 10px 5px;
+	box-sizing: border-box;
+	width: 100%;
+	display: block;
+	cursor: pointer;
+
+	transition: all 0.2s;
+}
+
+.Title:hover {
+	transform: skewY(2deg) skewX(10deg) scale(1.2);
+	text-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 499px) {

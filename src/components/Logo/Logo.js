@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Logo.module.css';
 
-import movieLogo from '../../assets/logo.jpg';
+import movieLogo from '../../assets/images/logo.jpg';
 
 const Logo = (props) => (
 	<div
