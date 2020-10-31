@@ -1,7 +1,9 @@
+import Layout from './hoc/Layout/Layout';
+
 function App() {
 	return (
 		<div>
-			<h1>Hello world</h1>
+			<Layout></Layout>
 		</div>
 	);
 }
