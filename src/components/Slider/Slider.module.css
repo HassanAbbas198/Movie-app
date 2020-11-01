@@ -1,0 +1,10 @@
+.Slider {
+	display: flex;
+	padding: 0 55px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+
+.Slider:hover .item {
+	transform: translateX(-25%);
+}
