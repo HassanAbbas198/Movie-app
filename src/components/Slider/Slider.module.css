@@ -1,10 +1,26 @@
 .Slider {
 	display: flex;
-	padding: 0 55px;
+	align-items: center;
+	height: 200px;
 	overflow-y: hidden;
 	overflow-x: scroll;
+	margin-bottom: 20px;
 }
 
-.Slider:hover .item {
-	transform: translateX(-25%);
+.Slider:hover > :not(:hover) {
+	transform: scale(0.9);
+}
+
+.Slider::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+.Slider::-webkit-scrollbar-thumb {
+	background: #c69963;
+	border-radius: 10px;
+}
+
+.Slider::-webkit-scrollbar-thumb:hover {
+	background: #80633e;
 }
