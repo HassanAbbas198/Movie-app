@@ -7,7 +7,12 @@ import { Card } from 'react-bootstrap';
 const SliderItem = (props) => {
 	return (
 		<React.Fragment>
-			<div className={classes.SliderItem}>
+			<div
+				className={classes.SliderItem}
+				onClick={() => {
+					props.showMovie(props.movie.id);
+				}}
+			>
 				<Card className="bg-dark text-white">
 					<Card.Img
 						src={`https://image.tmdb.org/t/p/w185/${props.movie.poster_path}`}

@@ -47,7 +47,7 @@ export const fetchMovies = () => {
 				)
 			);
 		} catch (error) {
-			fetchMoviesFail('Something went wrong');
+			dispatch(fetchMoviesFail('Something went wrong'));
 		}
 	};
 };

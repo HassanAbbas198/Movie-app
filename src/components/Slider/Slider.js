@@ -7,7 +7,9 @@ import SliderItem from './SliderItem/SliderItem';
 
 const Slider = (props) => {
 	const movieItems = props.movies.map((movie) => {
-		return <SliderItem key={movie.id} movie={movie} />;
+		return (
+			<SliderItem key={movie.id} movie={movie} showMovie={props.onShowMovie} />
+		);
 	});
 
 	return <div className={classes.Slider}>{movieItems}</div>;

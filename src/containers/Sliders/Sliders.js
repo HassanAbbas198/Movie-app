@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 
-import Slider from '../../components/Slider/Slider';
 import { Spinner } from 'react-bootstrap';
+import Slider from '../../components/Slider/Slider';
+import VerticallyCenteredModal from '../../components/UI/VerticallyCenteredModal/VerticallyCenteredModal';
 
 const Sliders = (props) => {
+	const [modalShow, setModalShow] = useState(false);
+
 	const { onFetchMovies } = props;
 
 	useEffect(() => {
 		onFetchMovies();
 	}, [onFetchMovies]);
 
+	const onShowMovie = (id) => {
+		setModalShow(true);
+	};
+
 	let sliders = (
-		<div style={{ paddingLeft: '50%', paddingTop: '30%' }}>
+		<div style={{ paddingLeft: '50%', paddingTop: '20%' }}>
 			<Spinner animation="border" />;
 		</div>
 	);
@@ -22,14 +29,19 @@ const Sliders = (props) => {
 	if (!props.loading) {
 		sliders = (
 			<div>
-				<Slider movies={props.actionMovies} />
-				<Slider movies={props.comedyMovies} />
-				<Slider movies={props.crimeMovies} />
+				<Slider movies={props.actionMovies} onShowMovie={onShowMovie} />
+				<Slider movies={props.comedyMovies} onShowMovie={onShowMovie} />
+				<Slider movies={props.crimeMovies} onShowMovie={onShowMovie} />
 			</div>
 		);
 	}
 
-	return sliders;
+	return (
+		<React.Fragment>
+			<VerticallyCenteredModal show={modalShow} />
+			{sliders}
+		</React.Fragment>
+	);
 };
 
 const mapStateToProps = (state) => {
