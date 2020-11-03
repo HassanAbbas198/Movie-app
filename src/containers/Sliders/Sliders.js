@@ -19,7 +19,7 @@ const Sliders = (props) => {
 		</div>
 	);
 
-	if (props.loading) {
+	if (!props.loading) {
 		sliders = (
 			<div>
 				<Slider movies={props.actionMovies} />
