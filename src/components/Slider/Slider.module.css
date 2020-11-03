@@ -4,6 +4,7 @@
 	height: 200px;
 	overflow-y: hidden;
 	overflow-x: scroll;
+	margin-bottom: 25px;
 }
 
 .Slider:hover > :not(:hover) {

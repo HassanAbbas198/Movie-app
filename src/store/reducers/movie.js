@@ -24,6 +24,7 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: true,
+				error: null,
 			};
 
 		case actionTypes.FETCH_MOVIES_FAIL:
