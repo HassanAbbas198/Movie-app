@@ -13,6 +13,8 @@ const Sliders = (props) => {
 
 	const { onFetchMovies } = props;
 
+	console.log(props);
+
 	useEffect(() => {
 		onFetchMovies();
 	}, [onFetchMovies]);
