@@ -60,7 +60,7 @@ Sliders.propTypes = {
 	comedyMovies: PropTypes.array.isRequired,
 	crimeMovies: PropTypes.array.isRequired,
 	loading: PropTypes.bool.isRequired,
-	selectedMovie: PropTypes.object.isRequired,
+	selectedMovie: PropTypes.object,
 	onFetchMovies: PropTypes.func.isRequired,
 	onFetchSingleMovie: PropTypes.func.isRequired,
 };
