@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import classes from './MovieSummary.module.css';
 import { formatDate } from '../../shared/dateFormatter';
@@ -42,6 +43,13 @@ const MovieSummary = (props) => {
 							</span>
 							{props.movie.popularity}
 						</p>
+
+						<p>
+							<span style={{ fontWeight: 'bold', color: 'grey' }}>
+								Rating:{' '}
+							</span>
+							{props.movie.vote_average}/10
+						</p>
 					</div>
 				</div>
 			</Modal.Body>
@@ -49,4 +57,10 @@ const MovieSummary = (props) => {
 	);
 };
 
-export default MovieSummary;
+const mapStateToProps = (state) => {
+	return {
+		movie: state.movie.singleMovie,
+	};
+};
+
+export default connect(mapStateToProps)(MovieSummary);
