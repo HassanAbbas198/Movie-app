@@ -41,9 +41,14 @@ const Sliders = (props) => {
 		);
 	}
 
+	let modal = null;
+	if (props.selectedMovie) {
+		modal = <VerticallyCenteredModal show={modalShow} onHide={onHideMovie} />;
+	}
+
 	return (
 		<React.Fragment>
-			<VerticallyCenteredModal show={modalShow} onHide={onHideMovie} />
+			{modal}
 			{sliders}
 		</React.Fragment>
 	);
@@ -55,6 +60,7 @@ const mapStateToProps = (state) => {
 		comedyMovies: state.movie.comedyMovies,
 		crimeMovies: state.movie.crimeMovies,
 		loading: state.movie.loading,
+		selectedMovie: state.movie.singleMovie,
 	};
 };
 

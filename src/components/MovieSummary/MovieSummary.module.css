@@ -1,0 +1,12 @@
+.Modal {
+	display: flex;
+}
+
+.Modal__content {
+	margin-left: 5px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
