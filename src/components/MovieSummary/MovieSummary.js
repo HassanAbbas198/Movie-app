@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import classes from './MovieSummary.module.css';
@@ -55,6 +56,10 @@ const MovieSummary = (props) => {
 			</Modal.Body>
 		</React.Fragment>
 	);
+};
+
+MovieSummary.prototype = {
+	movie: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {

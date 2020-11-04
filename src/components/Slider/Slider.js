@@ -17,6 +17,7 @@ const Slider = (props) => {
 
 Slider.propTypes = {
 	movies: PropTypes.array.isRequired,
+	onShowMovie: PropTypes.func.isRequired,
 };
 
 export default Slider;

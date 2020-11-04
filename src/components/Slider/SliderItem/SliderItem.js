@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './SliderItem.module.css';
 
@@ -26,6 +27,11 @@ const SliderItem = (props) => {
 			</div>
 		</React.Fragment>
 	);
+};
+
+SliderItem.propTypes = {
+	movie: PropTypes.object.isRequired,
+	showMovie: PropTypes.func.isRequired,
 };
 
 export default SliderItem;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
@@ -52,6 +53,16 @@ const Sliders = (props) => {
 			{sliders}
 		</React.Fragment>
 	);
+};
+
+Sliders.propTypes = {
+	actionMovies: PropTypes.array.isRequired,
+	comedyMovies: PropTypes.array.isRequired,
+	crimeMovies: PropTypes.array.isRequired,
+	loading: PropTypes.bool.isRequired,
+	selectedMovie: PropTypes.object.isRequired,
+	onFetchMovies: PropTypes.func.isRequired,
+	onFetchSingleMovie: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
