@@ -4,6 +4,7 @@ const initialState = {
 	actionMovies: [],
 	comedyMovies: [],
 	crimeMovies: [],
+	singleMovie: null,
 	error: null,
 	loading: false,
 };
@@ -32,6 +33,13 @@ const reducer = (state = initialState, action) => {
 				...state,
 				error: action.error,
 				loading: false,
+			};
+
+		case actionTypes.FETCH_SINGLE_MOVIE:
+			return {
+				...state,
+				singleMovie: action.movie,
+				error: null,
 			};
 
 		default:

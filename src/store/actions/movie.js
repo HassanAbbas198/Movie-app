@@ -52,30 +52,9 @@ export const fetchMovies = () => {
 	};
 };
 
-const fetchSingleMovieSuccess = (movie) => {
+export const fetchSingleMovie = (movie) => {
 	return {
-		type: actionTypes.FETCH_SINGLE_MOVIE_SUCCESS,
+		type: actionTypes.FETCH_SINGLE_MOVIE,
 		movie,
-	};
-};
-
-const fetchSingleMovieFail = (error) => {
-	return {
-		type: actionTypes.FETCH_SINGLE_MOVIE_FAIL,
-		error,
-	};
-};
-
-export const fetchSingleMovie = (movieId) => {
-	return async (dispatch) => {
-		try {
-			const movie = await axios.get(
-				`movie/${movieId}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
-			);
-			console.log(movie);
-			dispatch(fetchSingleMovieSuccess(movie));
-		} catch (error) {
-			dispatch(fetchSingleMovieFail(`Couldn't fetch the movie`));
-		}
 	};
 };

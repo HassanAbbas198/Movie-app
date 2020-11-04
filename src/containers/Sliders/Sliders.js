@@ -16,8 +16,8 @@ const Sliders = (props) => {
 		onFetchMovies();
 	}, [onFetchMovies]);
 
-	const onShowMovie = (movieId) => {
-		props.onFetchSingleMovie(movieId);
+	const onShowMovie = (selectedMovie) => {
+		props.onFetchSingleMovie(selectedMovie);
 		setModalShow(true);
 	};
 
@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onFetchMovies: () => dispatch(actions.fetchMovies()),
-		onFetchSingleMovie: (id) => dispatch(actions.fetchSingleMovie(id)),
+		onFetchSingleMovie: (movie) => dispatch(actions.fetchSingleMovie(movie)),
 	};
 };
 

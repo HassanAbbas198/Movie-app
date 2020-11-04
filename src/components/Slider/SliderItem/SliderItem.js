@@ -10,7 +10,7 @@ const SliderItem = (props) => {
 			<div
 				className={classes.SliderItem}
 				onClick={() => {
-					props.showMovie(props.movie.id);
+					props.showMovie(props.movie);
 				}}
 			>
 				<Card className="bg-dark text-white">
