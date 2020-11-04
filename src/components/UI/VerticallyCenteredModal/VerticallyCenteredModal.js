@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 
 const VerticallyCenteredModal = (props) => {
-	console.log('modal');
 	return (
 		<Modal
 			{...props}

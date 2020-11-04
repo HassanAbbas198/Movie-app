@@ -16,8 +16,13 @@ const Sliders = (props) => {
 		onFetchMovies();
 	}, [onFetchMovies]);
 
-	const onShowMovie = (id) => {
+	const onShowMovie = (movieId) => {
+		props.onFetchSingleMovie(movieId);
 		setModalShow(true);
+	};
+
+	const onHideMovie = () => {
+		setModalShow(false);
 	};
 
 	let sliders = (
@@ -38,7 +43,7 @@ const Sliders = (props) => {
 
 	return (
 		<React.Fragment>
-			<VerticallyCenteredModal show={modalShow} />
+			<VerticallyCenteredModal show={modalShow} onHide={onHideMovie} />
 			{sliders}
 		</React.Fragment>
 	);
@@ -56,6 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onFetchMovies: () => dispatch(actions.fetchMovies()),
+		onFetchSingleMovie: (id) => dispatch(actions.fetchSingleMovie(id)),
 	};
 };
 

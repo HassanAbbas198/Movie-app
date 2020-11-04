@@ -28,15 +28,15 @@ export const fetchMovies = () => {
 		try {
 			dispatch(fetchMoviesStart());
 			const action = await axios.get(
-				`tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=28`
+				`discover/tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=28`
 			);
 
 			const comedy = await axios.get(
-				`tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=35`
+				`discover/tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=35`
 			);
 
 			const crime = await axios.get(
-				`tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=80`
+				`discover/tv?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&with_genres=80`
 			);
 
 			dispatch(
@@ -47,7 +47,35 @@ export const fetchMovies = () => {
 				)
 			);
 		} catch (error) {
-			dispatch(fetchMoviesFail('Something went wrong'));
+			dispatch(fetchMoviesFail(`Oops! Movies can't be fetched.`));
+		}
+	};
+};
+
+const fetchSingleMovieSuccess = (movie) => {
+	return {
+		type: actionTypes.FETCH_SINGLE_MOVIE_SUCCESS,
+		movie,
+	};
+};
+
+const fetchSingleMovieFail = (error) => {
+	return {
+		type: actionTypes.FETCH_SINGLE_MOVIE_FAIL,
+		error,
+	};
+};
+
+export const fetchSingleMovie = (movieId) => {
+	return async (dispatch) => {
+		try {
+			const movie = await axios.get(
+				`movie/${movieId}?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}`
+			);
+			console.log(movie);
+			dispatch(fetchSingleMovieSuccess(movie));
+		} catch (error) {
+			dispatch(fetchSingleMovieFail(`Couldn't fetch the movie`));
 		}
 	};
 };
