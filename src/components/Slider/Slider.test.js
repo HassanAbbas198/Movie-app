@@ -10,7 +10,9 @@ configure({ adapter: new Adapter() });
 
 describe('<Slider />', () => {
 	it('should render <SliderItem /> component', () => {
-		const wrapper = shallow(<Slider movies={[{ name: 'random movie' }]} />);
+		const wrapper = shallow(
+			<Slider movies={[{ name: 'random movie' }]} onShowMovie={() => {}} />
+		);
 
 		expect(wrapper.find(SliderItem)).toHaveLength(1);
 	});

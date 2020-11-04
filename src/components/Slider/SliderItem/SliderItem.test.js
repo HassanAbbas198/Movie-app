@@ -14,6 +14,7 @@ describe('<SliderItem />', () => {
 			<SliderItem
 				key="15"
 				movie={{ name: 'harry potter', poster_path: 'xyx' }}
+				showMovie={() => {}}
 			/>
 		);
 
