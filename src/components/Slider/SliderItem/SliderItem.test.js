@@ -12,7 +12,6 @@ describe('<SliderItem />', () => {
 	it('should render <Card /> component', () => {
 		const wrapper = shallow(
 			<SliderItem
-				key="15"
 				movie={{ name: 'harry potter', poster_path: 'xyx' }}
 				showMovie={() => {}}
 			/>

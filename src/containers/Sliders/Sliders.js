@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import axios from '../../axios-orders';
 import * as actions from '../../store/actions/index';
 
 import { Spinner } from 'react-bootstrap';
 import Slider from '../../components/Slider/Slider';
 import VerticallyCenteredModal from '../../components/UI/VerticallyCenteredModal/VerticallyCenteredModal';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 const Sliders = (props) => {
 	const [modalShow, setModalShow] = useState(false);
 
 	const { onFetchMovies } = props;
-
-	console.log(props);
 
 	useEffect(() => {
 		onFetchMovies();
@@ -84,4 +84,7 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sliders);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withErrorHandler(Sliders, axios));
