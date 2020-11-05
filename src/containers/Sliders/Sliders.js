@@ -37,9 +37,21 @@ const Sliders = (props) => {
 	if (!props.loading) {
 		sliders = (
 			<div>
-				<Slider movies={props.actionMovies} onShowMovie={onShowMovie} />
-				<Slider movies={props.comedyMovies} onShowMovie={onShowMovie} />
-				<Slider movies={props.crimeMovies} onShowMovie={onShowMovie} />
+				<Slider
+					movies={props.actionMovies}
+					onShowMovie={onShowMovie}
+					label="Action"
+				/>
+				<Slider
+					movies={props.comedyMovies}
+					onShowMovie={onShowMovie}
+					label="Comedy"
+				/>
+				<Slider
+					movies={props.crimeMovies}
+					onShowMovie={onShowMovie}
+					label="Crime"
+				/>
 			</div>
 		);
 	}

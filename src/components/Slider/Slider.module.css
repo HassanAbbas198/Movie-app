@@ -24,3 +24,42 @@
 .Slider::-webkit-scrollbar-thumb:hover {
 	background: #80633e;
 }
+
+.Label {
+	position: relative;
+	width: fit-content;
+	height: 38px;
+	font-size: 22px;
+	font-weight: 500;
+	color: #c69963;
+	margin-left: 5px;
+	padding: 0 7px;
+}
+
+.Label__item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 3px;
+	background-color: #c69963;
+	border-radius: 5px;
+
+	transform: scaleY(0);
+
+	transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+		background-color 0.1s;
+}
+
+.Label__item:hover::before {
+	transform: scaleY(1);
+	width: 100%;
+}
+
+.Label__item__text:hover {
+	color: white;
+	margin-bottom: 0;
+	position: relative;
+	z-index: 100;
+}

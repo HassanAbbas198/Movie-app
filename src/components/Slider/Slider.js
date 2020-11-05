@@ -12,7 +12,16 @@ const Slider = (props) => {
 		);
 	});
 
-	return <div className={classes.Slider}>{movieItems}</div>;
+	return (
+		<React.Fragment>
+			<div className={classes.Label}>
+				<div className={classes.Label__item}>
+					<p className={classes.Label__item__text}>{props.label} movies</p>
+				</div>
+			</div>
+			<div className={classes.Slider}>{movieItems}</div>
+		</React.Fragment>
+	);
 };
 
 Slider.propTypes = {
