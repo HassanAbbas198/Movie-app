@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import axios from '../../axios-orders';
 import * as actions from '../../store/actions/index';
@@ -10,17 +9,23 @@ import Slider from '../../components/Slider/Slider';
 import VerticallyCenteredModal from '../../components/UI/VerticallyCenteredModal/VerticallyCenteredModal';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
-const Sliders = (props) => {
+const Sliders = () => {
 	const [modalShow, setModalShow] = useState(false);
 
-	const { onFetchMovies } = props;
+	const dispatch = useDispatch();
+
+	const actionMovies = useSelector((state) => state.movie.actionMovies);
+	const comedyMovies = useSelector((state) => state.movie.comedyMovies);
+	const crimeMovies = useSelector((state) => state.movie.crimeMovies);
+	const loading = useSelector((state) => state.movie.loading);
+	const selectedMovie = useSelector((state) => state.movie.singleMovie);
 
 	useEffect(() => {
-		onFetchMovies();
-	}, [onFetchMovies]);
+		dispatch(actions.fetchMovies());
+	}, [dispatch]);
 
 	const onShowMovie = (selectedMovie) => {
-		props.onFetchSingleMovie(selectedMovie);
+		dispatch(actions.fetchSingleMovie(selectedMovie));
 		setModalShow(true);
 	};
 
@@ -34,30 +39,26 @@ const Sliders = (props) => {
 		</div>
 	);
 
-	if (!props.loading) {
+	if (!loading) {
 		sliders = (
 			<div>
 				<Slider
-					movies={props.actionMovies}
+					movies={actionMovies}
 					onShowMovie={onShowMovie}
 					label="Action"
 				/>
 				<Slider
-					movies={props.comedyMovies}
+					movies={comedyMovies}
 					onShowMovie={onShowMovie}
 					label="Comedy"
 				/>
-				<Slider
-					movies={props.crimeMovies}
-					onShowMovie={onShowMovie}
-					label="Crime"
-				/>
+				<Slider movies={crimeMovies} onShowMovie={onShowMovie} label="Crime" />
 			</div>
 		);
 	}
 
 	let modal = null;
-	if (props.selectedMovie) {
+	if (selectedMovie) {
 		modal = <VerticallyCenteredModal show={modalShow} onHide={onHideMovie} />;
 	}
 
@@ -69,34 +70,4 @@ const Sliders = (props) => {
 	);
 };
 
-Sliders.propTypes = {
-	actionMovies: PropTypes.array.isRequired,
-	comedyMovies: PropTypes.array.isRequired,
-	crimeMovies: PropTypes.array.isRequired,
-	loading: PropTypes.bool.isRequired,
-	selectedMovie: PropTypes.object,
-	onFetchMovies: PropTypes.func.isRequired,
-	onFetchSingleMovie: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-	return {
-		actionMovies: state.movie.actionMovies,
-		comedyMovies: state.movie.comedyMovies,
-		crimeMovies: state.movie.crimeMovies,
-		loading: state.movie.loading,
-		selectedMovie: state.movie.singleMovie,
-	};
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onFetchMovies: () => dispatch(actions.fetchMovies()),
-		onFetchSingleMovie: (movie) => dispatch(actions.fetchSingleMovie(movie)),
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(withErrorHandler(Sliders, axios));
+export default withErrorHandler(Sliders, axios);
